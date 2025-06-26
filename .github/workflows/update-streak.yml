@@ -1,0 +1,30 @@
+name: Update Streak Card
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Run SVG Generator Script
+        run: node scripts/generate-streak-svg.js
+
+      - name: Commit and Push if Updated
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add .github/assets/streak-card.svg || echo "No changes to commit"
+          git commit -m "🔄 Update streak card [bot]" || echo "No commit"
+          git push || echo "Nothing to push"
