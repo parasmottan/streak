@@ -1,1 +1,1 @@
-![🔥 GitHub Streak](https://raw.githubusercontent.com/parasmottan/assets/main/.github/assets/streak-card.svg)
+![🔥 GitHub Streak](https://raw.githubusercontent.com/parasmottan/assets/main/streak-card.svg)
